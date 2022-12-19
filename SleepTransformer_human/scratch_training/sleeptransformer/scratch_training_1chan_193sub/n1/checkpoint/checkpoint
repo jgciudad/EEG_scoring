@@ -1,0 +1,2 @@
+model_checkpoint_path: "/zhome/02/5/153517/SleepTransformer_human/scratch_training/sleeptransformer/scratch_training_1chan_193sub/n1/checkpoint/model_step6200.ckpt"
+all_model_checkpoint_paths: "/zhome/02/5/153517/SleepTransformer_human/scratch_training/sleeptransformer/scratch_training_1chan_193sub/n1/checkpoint/model_step6200.ckpt"
