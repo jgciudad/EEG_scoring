@@ -65,7 +65,7 @@ def plot_history_cnn2(history, model_name, save_path, epochs=''):
     ax[2].plot(history['F1_score'])
     ax[2].plot(history['val_F1_score'])
     ax[2].legend(['Training', 'Validation'])
-    ax[2].set_title('Average F1 score')
+    ax[2].set_title('F1 score')
 
     fig.suptitle(model_name)
 
@@ -151,6 +151,42 @@ def compute_and_save_metrics_cnn2(y_true, y_pred, threshold, save_path, model_na
                 loc='center')
     plt.show()
     plt.savefig(os.path.join(save_path, 'metrics_' + str_thr + '_' + model_name + '.png'))
+
+
+def compute_and_save_metrics_whole_model(y_true, y_pred, save_path):
+    cm = confusion_matrix(y_true, y_pred)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['NREM', 'REM', 'WAKE', 'Art'])
+    cm_plot = disp.plot(cmap=plt.cm.Blues)
+    plt.savefig(os.path.join(save_path, 'cm_whole_model' + '.png'))
+
+    # ppv = [cm[0,0]/np.sum(cm[:,0]), cm[1,1]/np.sum(cm[:,1]), cm[2,2]/np.sum(cm[:,2]) ] # positive predictive value # it works properly but I prefer to use the sklearn implementation
+    ppv = precision_score(y_true, y_pred, average=None)  # positive predictive value
+    npv = [np.sum(cm[1:, 1:]) / np.sum(cm[:, 1:]),
+           (np.sum(cm) - np.sum(cm[1, :]) - np.sum(cm[:, 1]) + cm[1, 1]) / (np.sum(cm) - np.sum(cm[:, 1])),
+           (np.sum(cm) - np.sum(cm[2, :]) - np.sum(cm[:, 2]) + cm[2, 2]) / (np.sum(cm) - np.sum(cm[:, 2])),
+           np.sum(cm[:2, :2]) / np.sum(cm[:, :2])]  # negative predictive value
+    # tpr = [cm[0,0]/np.sum(cm[0, :]), cm[1,1]/np.sum(cm[1, :]), cm[2,2]/np.sum(cm[2, :]) ] # true positive rate, recall, sensitivity
+    tpr = recall_score(y_true, y_pred,
+                       average=None)  # true positive rate # it works properly but I prefer to use the sklearn implementation
+    tnr = [np.sum(cm[1:, 1:]) / np.sum(cm[1:, :]),
+           (np.sum(cm) - np.sum(cm[1, :]) - np.sum(cm[:, 1]) + cm[1, 1]) / (np.sum(cm) - np.sum(cm[1, :])),
+           (np.sum(cm) - np.sum(cm[2, :]) - np.sum(cm[:, 2]) + cm[2, 2]) / (np.sum(cm) - np.sum(cm[2, :])),
+           np.sum(cm[:2, :2]) / np.sum(cm[:2, :])]  # true negative rate
+    f1 = f1_score(y_true, y_pred, average=None)
+    accuracy = accuracy_score(y_true, y_pred)
+
+    metrics = pd.DataFrame(np.vstack([ppv, npv, tpr, tnr, f1]), columns=['NREM', 'REM', 'WAKE', 'Art'])
+    metrics.to_csv(os.path.join(save_path, 'metrics_whole_model' + '.csv'), index=False)
+
+    fig, ax = plt.subplots(2, 1)
+    ax[0].axis('off')
+    ax[0].table(cellText=metrics.round(3).values, colLabels=metrics.keys(),
+                rowLabels=['PPV', 'NPV', 'TPR', 'TNR', 'f1'],
+                loc='center')
+    ax[1].axis('off')
+    ax[1].table(cellText=np.round(np.array(accuracy).reshape((1, 1)), 3), colLabels=['Accuracy'], loc='center')
+    plt.show()
+    plt.savefig(os.path.join(save_path, 'metrics_whole_model' + '.png'))
 
 
 def optimal_threshold_idx(fpr, tpr):

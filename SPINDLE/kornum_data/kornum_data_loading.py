@@ -199,10 +199,10 @@ def load_and_concatenate(batch, data_folder):
 
 class SequenceDataset(tf.keras.utils.Sequence):
 
-    def __init__(self, data_folder, csv_path, set, batch_size, just_stage_labels, just_artifact_labels):
+    def __init__(self, data_folder, csv_path, set, batch_size, just_not_art_epochs, just_artifact_labels):
 
         self.data_folder = data_folder
-        self.file_list = filter_epochs(csv_path, set, just_stage_labels, just_artifact_labels)
+        self.file_list = filter_epochs(csv_path, set, just_not_art_epochs, just_artifact_labels)
         self.batch_size = batch_size
 
     def __len__(self):

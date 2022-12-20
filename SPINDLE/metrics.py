@@ -332,18 +332,29 @@ class BinaryF1Score(tf.keras.metrics.Metric):
 
         # tf.print(y_true.dtype)
         # tf.print((y_pred>0.5).dtype)
+        y_true = tf.cast(y_true, dtype=tf.float32)
 
         self.TP.reset_state()
         self.FP.reset_state()
         self.FN.reset_state()
 
-        self.TP.update_state(y_true>0.5, y_pred>0.5)
-        self.FP.update_state(y_true>0.5, y_pred>0.5)
-        self.FN.update_state(y_true>0.5, y_pred>0.5)
+        # tf.print(y_true.dtype)
+        # tf.print(tf.convert_to_tensor(0.5).dtype)
 
-        f1_score = 2*self.TP.result() / (2*self.TP.result() + self.FP.result() + self.FN.result())
+        num_arts_batch = tf.shape(tf.where(y_true == 1))[0]
 
-        self.epoch_average_F1.update_state(f1_score)
+        # if num_arts_batch==0:
+        #     tf.print('ZERO ARTIFACTS IN BATCH')
+        if num_arts_batch > 0:
+            # tf.print('ARTIFACTS:', num_arts_batch)
+
+            self.TP.update_state(y_true>0.5, y_pred>0.5)
+            self.FP.update_state(y_true>0.5, y_pred>0.5)
+            self.FN.update_state(y_true>0.5, y_pred>0.5)
+
+            f1_score = 2*self.TP.result() / (2*self.TP.result() + self.FP.result() + self.FN.result())
+
+            self.epoch_average_F1.update_state(f1_score)
 
     def result(self):
         return self.epoch_average_F1.result()
@@ -393,20 +404,27 @@ class BinaryBalancedAccuracy(tf.keras.metrics.Metric):
         self.FP.reset_state()
         self.TN.reset_state()
 
-        self.TP.update_state(y_true, y_pred)
-        self.FN.update_state(y_true, y_pred)
-        self.FP.update_state(y_true, y_pred)
-        self.TN.update_state(y_true, y_pred)
+        num_arts_batch = tf.shape(tf.where(y_true == 1))[0]
 
-        # if ((self.TP.result() + self.FN.result())==0) or ((self.TN.result() + self.FP.result())==0):
-        #     tf.print('zero')
+        # if num_arts_batch==0:
+            # tf.print('ZERO ARTIFACTS IN BATCH')
+        if num_arts_batch > 0:
+            # tf.print('ARTIFACTS:', num_arts_batch)
 
-        sensitivity = self.TP.result() / (self.TP.result() + self.FN.result())
-        specificity = self.TN.result() / (self.TN.result() + self.FP.result())
+            self.TP.update_state(y_true, y_pred)
+            self.FN.update_state(y_true, y_pred)
+            self.FP.update_state(y_true, y_pred)
+            self.TN.update_state(y_true, y_pred)
 
-        balanced_accuracy = (sensitivity + specificity)/2
+            # if ((self.TP.result() + self.FN.result())==0) or ((self.TN.result() + self.FP.result())==0):
+            #     tf.print('zero')
 
-        self.epoch_average_accuracy.update_state(balanced_accuracy)
+            sensitivity = self.TP.result() / (self.TP.result() + self.FN.result())
+            specificity = self.TN.result() / (self.TN.result() + self.FP.result())
+
+            balanced_accuracy = (sensitivity + specificity)/2
+
+            self.epoch_average_accuracy.update_state(balanced_accuracy)
 
     def result(self):
         return self.epoch_average_accuracy.result()

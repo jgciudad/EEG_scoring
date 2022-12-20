@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f923eda-9e54-44a5-bf35-d4fde0a1d94f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/find_optimal_threshold/opt_threshold.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/hmm_parameters/calculate_hmm_parameters.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/training_CNN2_kornum.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SPINDLE/hmm.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/hmm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SPINDLE/kornum_data/kornum_data_loading.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/kornum_data_loading.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SPINDLE/kornum_data/preprocess_and_save_kornum_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/preprocess_and_save_kornum_dataset.py" afterDir="false" />
@@ -13,20 +10,12 @@
       <change beforePath="$PROJECT_DIR$/../SPINDLE/kornum_data/testing_whole_SPINDLE_kornum.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/testing_whole_SPINDLE_kornum.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SPINDLE/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/metrics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SPINDLE/results/results.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/results/results.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/inital_probs_SPINDLE.npy" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/hmm_parameters/inital_probs_SPINDLE.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/inital_probs_SPINDLE.npy" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/testing_CNN1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/testing_CNN1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/testing_CNN2.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/testing_CNN2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/testing_whole_SPINDLE.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/testing_whole_SPINDLE.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/transition_matrix_SPINDLE.npy" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/hmm_parameters/transition_matrix_SPINDLE.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/transition_matrix_SPINDLE.npy" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../SPINDLE/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_preprocessing/kornum_data/genlist_scratch_training.m" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/genlist_scratch_training.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/datagenerator_from_list_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/datagenerator_from_list_v3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/datagenerator_wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/datagenerator_wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/eval_result_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/eval_result_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/train_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/train_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
