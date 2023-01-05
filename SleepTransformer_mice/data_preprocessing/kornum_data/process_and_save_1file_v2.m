@@ -1,11 +1,11 @@
 function [ret] = process_and_save_1file(filepath, n, mat_path)
-VERSION 2: preprocessing as in SPINDLE. Details:
-    o fs=128
-    o epoch_second changed from 30 to 4 seconds
-    o STFT: 
-        o win_size: kept to 2 seconds
-        o overlap: changed from 1 second to 1.8750 seconds (240 samples)
-    o ARTIFACTS: they are kept (we are going to predict artifacts as well)
+% VERSION 2: preprocessing as in SPINDLE. Details:
+%     o fs=128
+%     o epoch_second changed from 30 to 4 seconds
+%     o STFT: 
+%         o win_size: kept to 2 seconds
+%         o overlap: changed from 1 second to 1.8750 seconds (240 samples)
+%     o ARTIFACTS: they are kept (we are going to predict artifacts as well)
 
 
 
