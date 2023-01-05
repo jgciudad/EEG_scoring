@@ -2,22 +2,22 @@ clear all
 close all
 clc
 
-addpath('edf_reader');
+% addpath('C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_mice\edf_reader');
 
-xml_path = 'C:/Users/javig/shhs/polysomnography/annotations-events-nsrr/shhs1/';
-edf_path = 'C:/Users/javig/shhs/polysomnography/edfs/shhs1/';
-mat_path = './mat/';
+spindle_path = 'C:\Users\javig\Desktop\SPINDLE dataset\SPINDLE dataset\data (original)\CohortA';
+scorer=2;
+mat_path = ['./mat/', 'scorer_', num2str(scorer), '/'];
 
 if(~exist(mat_path,'dir'))
     mkdir(mat_path);
 end
 
-dirlist = dir([edf_path, '*.edf']);
+dirlist = dir([spindle_path, '/**/*.edf']);
+% dirlist = dirlist(arrayfun(@(x) ~strcmp(x.name(1),'.'),dirlist)); % remove hidden files
 N = numel(dirlist);
 
-
 for n = 1 : N
-    filename = dirlist(n).name;
-    disp(filename);
-    process_and_save_1file(filename, n, xml_path, edf_path, mat_path);
+    filepath = [dirlist(n).folder, '/', dirlist(n).name];
+    disp(filepath);
+    process_and_save_1file_v1(filepath, n, mat_path, scorer);
 end
