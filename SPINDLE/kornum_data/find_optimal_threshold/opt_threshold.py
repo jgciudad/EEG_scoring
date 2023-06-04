@@ -5,7 +5,7 @@ from hmm import *
 from kornum_data.kornum_data_loading import load_to_dataset, load_labels
 from sklearn import metrics
 
-weights_path = r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\results\4 - trained on kornum data\B_1\B_1_05epochs.h5'
+weights_path = r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\results\4 - trained on kornum data\evaluation on kornum data\B_1\B_1_05epochs.h5'
 
 plt.ion()
 
@@ -164,6 +164,16 @@ display.plot()
 opt_thr_idx = optimal_threshold_idx(fpr, tpr)
 opt_thr = thresholds[opt_thr_idx]
 plt.plot(fpr[opt_thr_idx], tpr[opt_thr_idx], 'r.')
-plt.title('Optimal threshold = %1.3f' % opt_thr)
+plt.title('Optimal threshold = %1.f' % opt_thr)
 
+np.save('fpr_kornum_training_set.npy', fpr)
+np.save('tpr_kornum_training_set.npy', tpr)
 np.save('optimal_thr_kornum.npy', opt_thr)
+
+plt.figure(figsize=(6.4*1.5, 4.8*1.5))
+plt.plot(fpr, tpr, linewidth=3.5, color="royalblue")
+plt.title('Minimum distance threshold = %1.2f' % opt_thr, fontsize=26)
+plt.plot(fpr[opt_thr_idx], tpr[opt_thr_idx], '.', markersize=18, color="tomato")
+plt.xlabel('True Positive Rate', fontsize=26)
+plt.ylabel('False Positive Rate', fontsize=26)
+plt.tick_params(axis='both', which='major', labelsize=26)

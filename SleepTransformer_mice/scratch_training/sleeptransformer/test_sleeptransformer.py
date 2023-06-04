@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import tensorflow as tf
+from matplotlib import pyplot as plt
 
 
 import shutil, sys
@@ -33,18 +34,21 @@ tf.app.flags.DEFINE_boolean("allow_soft_placement", True, "Allow device soft dev
 tf.app.flags.DEFINE_boolean("log_device_placement", False, "Log placement of ops on devices")
 
 # My manually defined parameters
-tf.app.flags.DEFINE_string("eeg_train_data", "../../file_list/scratch_training/eeg/train_list.txt", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eeg_eval_data", "../../file_list/scratch_training/eeg/eval_list.txt", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eeg_test_data", "../../file_list/scratch_training/eeg/test_list.txt", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eog_train_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eog_eval_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eog_test_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("emg_train_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("emg_eval_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("emg_test_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("out_dir", './scratch_training_1chan/n1/', "Point to output directory")
+tf.app.flags.DEFINE_string("eeg_train_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg1/train_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("eeg_eval_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg1/eval_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("eeg_test_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg1/test_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("eog_train_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg2/train_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("eog_eval_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg2/eval_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("eog_test_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg2/test_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("emg_train_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/emg/train_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("emg_eval_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/emg/eval_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("emg_test_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/emg/test_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("out_dir", './test_plotting_attention_weights/n1/', "Point to output directory")
 tf.app.flags.DEFINE_integer("seq_len", 21, "Sequence length (default: 10)")
+tf.app.flags.DEFINE_boolean("early_stopping", True, "whether to apply early stopping (default: False)")
 tf.app.flags.DEFINE_integer("num_blocks", 4, "Number of transformer block (default: 0)") # if zero, specific parameters are expected for the numbers of frame blocks and seq blocks
+tf.app.flags.DEFINE_integer("nclass", 4, "Number of classes (default: 4)")
+tf.app.flags.DEFINE_integer("frame_seq_len", 17, "frame_seq_len")
 
 # My Parameters
 # tf.app.flags.DEFINE_string("eeg_train_data", "../train_data.mat", "Point to directory of input data")
@@ -89,9 +93,14 @@ if not os.path.isdir(os.path.abspath(out_path)): os.makedirs(os.path.abspath(out
 if not os.path.isdir(os.path.abspath(checkpoint_path)): os.makedirs(os.path.abspath(checkpoint_path))
 
 config = Config()
+config.nclass = FLAGS.nclass
+config.frame_seq_len = FLAGS.frame_seq_len
+config.frm_maxlen = FLAGS.frame_seq_len
 config.epoch_seq_len = FLAGS.seq_len
 config.seq_maxlen = FLAGS.seq_len
-config.epoch_step = FLAGS.seq_len
+config.training_epoch = 10*config.epoch_seq_len
+
+# config.epoch_step = FLAGS.seq_len
 
 if (FLAGS.num_blocks > 0):
     config.frm_num_blocks = FLAGS.num_blocks
@@ -235,7 +244,7 @@ with tf.Graph().as_default():
         print("Model loaded")
 
 
-        def dev_step(x_batch, y_batch):
+        def dev_step(x_batch, y_batch, test_step):
             '''
             A single evaluation step
             '''
@@ -244,8 +253,21 @@ with tf.Graph().as_default():
                 net.input_y: y_batch,
                 net.istraining: 0
             }
-            output_loss, total_loss, yhat, score = sess.run(
-                   [net.output_loss, net.loss, net.predictions, net.scores], feed_dict)
+            output_loss, total_loss, yhat, score, Qs, Qe, Ks, Ke, sa_e, sa_s = sess.run(
+                   [net.output_loss, net.loss, net.predictions, net.scores, net.Qsequence, net.Qepoch, net.Ksequence, net.Kepoch, net.summary_attention_epoch, net.summary_attention_sequence], feed_dict)
+
+            sa_s_sum = np.sum(sa_s, axis=0)
+            classes = ["W", "N", "R", "A"]
+            fig, ax = plt.subplots(4,5)
+            for i in range(20):
+
+                c = classes[np.argmax(y_batch[0, i ,:])]
+
+                ax[int(i/5), i%5].bar(np.arange(21), sa_s_sum[:, i]/np.max(sa_s_sum[:, i]))
+                ax[int(i/5), i%5].set_title(c)
+
+
+
             return output_loss, total_loss, yhat, score
 
         def evaluate(gen_wrapper):
@@ -288,7 +310,7 @@ with tf.Graph().as_default():
             output_loss =0
             total_loss = 0
 
-            factor = 10
+            factor = 1
             yhat = np.zeros([len(gen.data_index), config.epoch_seq_len])
             score = np.zeros([len(gen.data_index), config.epoch_seq_len, config.nclass])
             # use 10x of minibatch size to speed up
@@ -296,7 +318,7 @@ with tf.Graph().as_default():
             test_step = 1
             while test_step < num_batch_per_epoch:
                 x_batch, y_batch, label_batch_ = gen.next_batch(factor*config.batch_size)
-                output_loss_, total_loss_, yhat_, score_ = dev_step(x_batch, y_batch)
+                output_loss_, total_loss_, yhat_, score_ = dev_step(x_batch, y_batch, test_step)
                 output_loss += output_loss_
                 total_loss += total_loss_
                 yhat[(test_step - 1) * factor * config.batch_size: test_step * factor * config.batch_size] = yhat_

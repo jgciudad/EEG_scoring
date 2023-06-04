@@ -31,7 +31,7 @@ class Transformer_Encoder:
             for i in range(self.num_blocks):
                 with tf.variable_scope("num_blocks_{}".format(i), reuse=tf.AUTO_REUSE):
                     # self-attention
-                    x = multihead_attention(queries=x,
+                    x, Q, K, attention = multihead_attention(queries=x,
                                             keys=x,
                                             values=x,
                                             num_heads=self.num_heads,
@@ -42,5 +42,7 @@ class Transformer_Encoder:
                            num_units=[self.d_ff, self.d_model],
                            dropout_rate=self.fc_dropout_rate,
                            training=training)
+        print('transformer_encoder.py, l45', Q.get_shape())
+        print('transformer_encoder.py, l46', K.get_shape())
         memory = x
-        return memory
+        return memory, Q, K, attention

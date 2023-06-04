@@ -1,6 +1,6 @@
 from tensorflow.keras.layers import Input, MaxPool2D, Conv2D, Dense, Softmax, Flatten, Dropout
 from metrics import *
-from tools import
+from tools import *
 from hmm import *
 from kornum_data_loading import load_to_dataset, load_labels
 
@@ -9,7 +9,7 @@ from kornum_data_loading import load_to_dataset, load_labels
 # save_path = r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\SPINDLE\results\3 - new round of results after meeting\A_1\Evaluation\Against scorers intersection\Excluding artifacts\Before HMM'
 save_results_path = r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\results\4 - trained on kornum data\A_1'
 model_name = 'A_1'
-weights_path = r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\results\4 - trained on kornum data\A_1\A_1_5e-6_FINAL_05epochs.h5'
+weights_path = r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\results\4 - trained on kornum data\evaluation on kornum data\A_1\A_1_5e-6_FINAL_05epochs.h5'
 
 plt.ion()
 
@@ -41,7 +41,7 @@ spindle_model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=5 * 1e-5,
 
 # -------------------------------------------------------------------------------------------------------------------------
 
-labels_paths = [r"C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum\2DTUSERVER-Alexandra\tsv\M52-b2.tsv",
+labels_paths = [r"C:\Users\javig\Documents\THESIS_DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum\2DTUSERVER-Alexandra\tsv\M52-b2.tsv",
                 r"C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum\2DTUSERVER-Alexandra\tsv\M58-b2.tsv",
                 r"C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum\2DTUSERVER-CH\tsv\m13-b1.tsv",
                 r"C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum\2DTUSERVER-CH\tsv\m15-b1.tsv",
@@ -55,7 +55,7 @@ labels_paths = [r"C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\Laura
                 ]
 
 
-signal_paths = [r"C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum\2DTUSERVER-Alexandra\EDF\M52-b2.edf",
+signal_paths = [r"C:\Users\javig\Documents\THESIS_DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum\2DTUSERVER-Alexandra\EDF\M52-b2.edf",
                 r"C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum\2DTUSERVER-Alexandra\EDF\M58-b2.edf",
                 r"C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum\2DTUSERVER-CH\EDF\m13-b1.edf",
                 r"C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum\2DTUSERVER-CH\EDF\m15-b1.edf",

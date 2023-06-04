@@ -7,7 +7,7 @@
 # import sklearn.metrics
 # import random
 from tensorflow.keras.layers import Input, MaxPool2D, Conv2D, Dense, Flatten, Dropout
-from spindle_data.spindle_data_loading import SequenceDataset, SequenceDataset2
+from spindle_data.spindle_data_loading import SequenceDataset, SequenceDataset2, load_to_dataset
 from metrics import *
 from tools import *
 
@@ -44,18 +44,18 @@ model_name = 'A_1b'
 # del train_dataset_2
 # del val_dataset_2
 
-# signal_paths = [r"C:\Users\javig\Desktop\SPINDLE dataset\SPINDLE dataset\data (original)\CohortA\recordings\A1.edf",
-#                 r"C:\Users\javig\Desktop\SPINDLE dataset\SPINDLE dataset\data (original)\CohortA\recordings\A2.edf"]
-# labels_paths = [r"C:\Users\javig\Desktop\SPINDLE dataset\SPINDLE dataset\data (original)\CohortA\scorings\A1.csv",
-#                 r"C:\Users\javig\Desktop\SPINDLE dataset\SPINDLE dataset\data (original)\CohortA\scorings\A2.csv"]
-#
-# train_dataset, val_dataset = load_to_dataset(signal_paths=signal_paths,
-#                                              labels_paths=labels_paths,
-#                                              scorer=1,
-#                                              just_artifact_labels=False,
-#                                              artifact_to_stages=True,
-#                                              balance_artifacts=False,
-#                                              validation_split=0.1)
+signal_paths = [r"C:\Users\javig\Desktop\SPINDLE dataset\SPINDLE dataset\data (original)\CohortA\recordings\A3.edf",
+                r"C:\Users\javig\Desktop\SPINDLE dataset\SPINDLE dataset\data (original)\CohortA\recordings\A4.edf"]
+labels_paths = [r"C:\Users\javig\Desktop\SPINDLE dataset\SPINDLE dataset\data (original)\CohortA\scorings\A3.csv",
+                r"C:\Users\javig\Desktop\SPINDLE dataset\SPINDLE dataset\data (original)\CohortA\scorings\A4.csv"]
+
+train_dataset, val_dataset = load_to_dataset(signal_paths=signal_paths,
+                                             labels_paths=labels_paths,
+                                             scorer=1,
+                                             just_artifact_labels=False,
+                                             artifact_to_stages=True,
+                                             balance_artifacts=False,
+                                             validation_split=0.1)
 #
 # batch_size = 100
 # train_dataset = train_dataset.batch(batch_size)

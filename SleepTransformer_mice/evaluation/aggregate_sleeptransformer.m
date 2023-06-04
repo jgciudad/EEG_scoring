@@ -4,9 +4,9 @@ function collection = aggregate_sleeptransformer(nchan)
     Nfold = 1;
     yh = cell(Nfold,1);
     yt = cell(Nfold,1);
-    mat_path = 'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_human\mat/';
-    listing = dir([mat_path, '*_eeg.mat']);
-    load('C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_human/data_split_eval.mat');
+    mat_path = 'C:\Users\javig\Documents\THESIS_DATA\SleepTransformer_mice\data_preprocessing\kornum_data\mat\';
+    listing = dir([mat_path, '*_eeg1.mat']);
+    load('C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_mice\data_preprocessing\kornum_data\data_split_eval.mat');
     
     acc_novote = [];
     
@@ -26,7 +26,7 @@ function collection = aggregate_sleeptransformer(nchan)
         end
         
         if(seq_len < 100)
-            load("C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_human\scratch_training\sleeptransformer\scratch_training_1chan\n1\test_ret.mat");
+            load("C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_mice\scratch_training\sleeptransformer\scratch_training_3chan_CPU_test2\n1\test_ret.mat");
         else
             load(['./intepretable_sleep/sleeptransformer_simple_longseq/scratch_training_',num2str(nchan),'chan/n',num2str(fold),'/test_ret.mat']);
         end
@@ -51,7 +51,7 @@ function collection = aggregate_sleeptransformer(nchan)
                 N = size(score_i{n},1);
                 %valid_ind{n} = ones(N,1);
 
-                score_i{n} = [ones(seq_len-1,5); score{n}(start_pos:end_pos, :)];
+                score_i{n} = [ones(seq_len-1,4); score{n}(start_pos:end_pos, :)];
                 %valid_ind{n} = [zeros(seq_len-1,1); valid_ind{n}]; 
                 score_i{n} = circshift(score_i{n}, -(seq_len - n), 1);
                 %valid_ind{n} = circshift(valid_ind{n}, -(seq_len - n), 1);
@@ -81,16 +81,20 @@ function collection = aggregate_sleeptransformer(nchan)
     end
     yh = cell2mat(yh);
     yt = cell2mat(yt);
+    
+    yh = yh(yt~=4); % filter out artifacts
+    yt = yt(yt~=4); % filter out artifacts
+
     acc = sum(yh == yt)/numel(yt)
     C = confusionmat(yt, yh);
-    
-    [mysensitivity, myselectivity]  = calculate_sensitivity_selectivity(yt, yh);
+        
+    [mysensitivity, myselectivity]  = calculate_sensitivity_selectivity(yt, yh); % THEY MADE A MISTAKE, THIS IS NOT SELECTIVITY, IS PRECISION!!! (is actually good, because is what I want)
     
     [fscore, sensitivity, specificity] = litis_class_wise_f1(yt, yh);
     mean_fscore = mean(fscore)
     mean_sensitivity = mean(sensitivity)
     mean_specificity = mean(specificity)
-    kappa = kappaindex(yh,yt,5)
+    kappa = kappaindex(yh,yt,4)
     
     
     str = '';
@@ -106,7 +110,7 @@ function collection = aggregate_sleeptransformer(nchan)
     str = [str, '$', num2str(mean_specificity*100, '%.1f'), '$', ' & '];
     
     % class-wise MF1
-    for i = 1 : 5
+    for i = 1 : 3
         str = [str, '$', num2str(fscore(i)*100,'%.1f'), '$ & '];
     end
     str

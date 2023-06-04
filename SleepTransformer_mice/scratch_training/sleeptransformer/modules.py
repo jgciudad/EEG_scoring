@@ -55,7 +55,9 @@ def scaled_dot_product_attention(Q, K, V, dropout_rate=0.,
 
         # softmax
         outputs = tf.nn.softmax(outputs)
+        print('modules.py, l58', outputs.get_shape())
         attention = tf.transpose(outputs, [0, 2, 1])
+        print('modules.py, l60', attention.get_shape())
         tf.summary.image("attention", tf.expand_dims(attention[:1], -1))
 
         # attention dropout
@@ -64,7 +66,7 @@ def scaled_dot_product_attention(Q, K, V, dropout_rate=0.,
         # weighted sum (context vectors)
         outputs = tf.matmul(outputs, V)  # (N, T_q, d_v)
 
-    return outputs
+    return outputs, attention
 
 def multihead_attention(queries, keys, values,
                         #key_masks,
@@ -93,14 +95,20 @@ def multihead_attention(queries, keys, values,
         Q = tf.layers.dense(queries, d_model, use_bias=True)  # (N, T_q, d_model)
         K = tf.layers.dense(keys, d_model, use_bias=True)  # (N, T_k, d_model)
         V = tf.layers.dense(values, d_model, use_bias=True)  # (N, T_k, d_model)
+        print('modules.py, l96', Q.get_shape())
+        print('modules.py, l97', K.get_shape())
+        print('modules.py, l98', V.get_shape())
 
         # Split and concat
         Q_ = tf.concat(tf.split(Q, num_heads, axis=2), axis=0)  # (h*N, T_q, d_model/h)
         K_ = tf.concat(tf.split(K, num_heads, axis=2), axis=0)  # (h*N, T_k, d_model/h)
         V_ = tf.concat(tf.split(V, num_heads, axis=2), axis=0)  # (h*N, T_k, d_model/h)
+        print('modules.py, l101', Q_.get_shape())
+        print('modules.py, l102', K_.get_shape())
+        print('modules.py, l103', V_.get_shape())
 
         # Attention
-        outputs = scaled_dot_product_attention(Q_, K_, V_, attention_dropout_rate, training)
+        outputs, attention = scaled_dot_product_attention(Q_, K_, V_, attention_dropout_rate, training)
 
         # Restore shape
         outputs = tf.concat(tf.split(outputs, num_heads, axis=0), axis=2)  # (N, T_q, d_model)
@@ -111,7 +119,7 @@ def multihead_attention(queries, keys, values,
         # Normalize
         outputs = ln(outputs)
 
-    return outputs
+    return outputs, Q_, K_, attention
 
 
 def ff(inputs, num_units, dropout_rate = 0., training=True, scope="positionwise_feedforward"):

@@ -9,8 +9,8 @@ rng(10); % for repeatable
 % between various networks
 
 % Nsub = 5463;
-% Nsub = 75;
-Nsub = 191;
+Nsub = 75;
+% Nsub = 191;
 
 subjects = randperm(Nsub);
 

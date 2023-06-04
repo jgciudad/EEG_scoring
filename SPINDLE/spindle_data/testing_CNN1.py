@@ -4,15 +4,14 @@ from tools import *
 from hmm import *
 from spindle_data.spindle_data_loading import load_to_dataset, load_labels
 
-save_results_path = r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\results\4 - trained on kornum data\evaluation on spindle data\scorer 2\A_1'
-weights_path = r"C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\results\4 - trained on kornum data\evaluation on kornum data\A_1\A_1_5e-6_FINAL_05epochs.h5"
+scorer=2
+save_results_path = r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\results\5 - trained on SPINDLE (Final)\evaluation_brownlab\scorer_' + str(scorer) + '\CNN1'
+weights_path = r"C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\results\3 - new round of results after meeting\A_1\A_1_5epochs.h5"
 model_name = 'A_1'
 plt.ion()
 
-transition_matrix = np.load(
-    r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\kornum_data\hmm_parameters\transition_matrix_kornum.npy')
-initial_probs = np.load(
-    r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\kornum_data\hmm_parameters\initial_probs_kornum.npy')
+transition_matrix = np.load(r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\spindle_data\hmm_parameters\transition_matrix_SPINDLE.npy')
+initial_probs = np.load(r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\spindle_data\hmm_parameters\inital_probs_SPINDLE.npy')
 
 spindle_model = tf.keras.Sequential([
     Input((160, 48, 3)),
@@ -40,14 +39,16 @@ spindle_model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=5 * 1e-5,
 # -------------------------------------------------------------------------------------------------------------------------
 
 
-labels_paths = [r'C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/scorings/A1.csv',
-                r'C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/scorings/A2.csv',
+labels_paths = [
+    # r'C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/scorings/A1.csv',
+    #             r'C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/scorings/A2.csv',
                 r'C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/scorings/A3.csv',
                 r'C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/scorings/A4.csv'
                 ]
 
-signal_paths = [r"C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/recordings/A1.edf",
-                r"C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/recordings/A2.edf",
+signal_paths = [
+    # r"C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/recordings/A1.edf",
+    #             r"C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/recordings/A2.edf",
                 r"C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/recordings/A3.edf",
                 r"C:/Users/javig/Desktop/SPINDLE dataset/SPINDLE dataset/data (original)/CohortA/recordings/A4.edf"
                 ]
@@ -56,7 +57,7 @@ for i in range(len(signal_paths)):
 # i=0
     test_dataset = load_to_dataset(signal_paths=[signal_paths[i]],
                                    labels_paths=[labels_paths[i]],
-                                   scorer=2,
+                                   scorer=scorer,
                                    just_artifact_labels=False,
                                    artifact_to_stages=True,
                                    balance_artifacts=False,
@@ -74,7 +75,7 @@ for i in range(len(signal_paths)):
             y_true = tf.concat([y_true, batch[1]], axis=0)
 
     y_art = load_labels(labels_path=labels_paths[i],
-                        scorer=2,
+                        scorer=scorer,
                         just_artifact_labels=True,
                         artifact_to_stages=False)
     y_art = y_art.to_numpy()

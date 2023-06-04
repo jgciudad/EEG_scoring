@@ -19,6 +19,7 @@ class SleepTransformer(object):
 
         # input for frame-level transformer, self.config.frame_seq_len+1 because of CLS
         frm_trans_X = tf.reshape(self.input_x,[-1, self.config.frame_seq_len, self.config.ndim * self.config.nchannel])
+        print('sleeptransformer.py, l22', frm_trans_X.get_shape())
         with tf.variable_scope("frame_transformer"):
             frm_trans_encoder = Transformer_Encoder(d_model=self.config.frm_d_model,
                                                     d_ff=self.config.frm_d_ff,
@@ -28,8 +29,10 @@ class SleepTransformer(object):
                                                     fc_dropout_rate=self.config.frm_fc_dropout,
                                                     attention_dropout_rate=self.config.frm_attention_dropout,
                                                     smoothing=self.config.frm_smoothing)
-            frm_trans_out = frm_trans_encoder.encode(frm_trans_X, training=self.istraining)
+            frm_trans_out, self.Qepoch, self.Kepoch, self.summary_attention_epoch = frm_trans_encoder.encode(frm_trans_X, training=self.istraining)
             print(frm_trans_out.get_shape())
+            print('sleeptransformer.py, l33', self.Qepoch.get_shape())
+            print('sleeptransformer.py, l34', self.Kepoch.get_shape())
             #[-1, frame_seq_len+1, d_model] [-1, 29, 128*3]
 
 
@@ -40,6 +43,7 @@ class SleepTransformer(object):
 
         # unfold the data for sequence processing
         seq_trans_X = tf.reshape(self.attention_out, [-1, self.config.epoch_seq_len, self.config.frm_d_model])
+        print('sleeptransformer.py, l46', seq_trans_X.get_shape())
         with tf.variable_scope("seq_transformer"):
             seq_trans_encoder = Transformer_Encoder(d_model=self.config.seq_d_model,
                                                     d_ff=self.config.seq_d_ff,
@@ -49,8 +53,10 @@ class SleepTransformer(object):
                                                     fc_dropout_rate=self.config.seq_fc_dropout,
                                                     attention_dropout_rate=self.config.seq_attention_dropout,
                                                     smoothing=self.config.seq_smoothing)
-            seq_trans_out = seq_trans_encoder.encode(seq_trans_X, training=self.istraining)
+            seq_trans_out, self.Qsequence, self.Ksequence, self.summary_attention_sequence = seq_trans_encoder.encode(seq_trans_X, training=self.istraining)
             print(seq_trans_out.get_shape())
+            print('sleeptransformer.py, l54', self.Qsequence.get_shape())
+            print('sleeptransformer.py, l55', self.Ksequence.get_shape())
 
         self.scores = []
         self.predictions = []

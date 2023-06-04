@@ -1,5 +1,5 @@
 '''
-Cleans the recordings that are corrupted somehow
+Cleans the recordings that are somehow corrupted
 '''
 
 import pandas as pd

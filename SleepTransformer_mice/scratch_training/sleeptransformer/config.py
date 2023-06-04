@@ -13,16 +13,16 @@ class Config(object):
         self.learning_rate = 1e-4
         self.l2_reg_lambda = 0.0001
         self.training_epoch = 10*self.epoch_seq_len
-        self.batch_size = 32
+        self.batch_size = 1
 
         self.frame_attention_size = 64
 
         self.evaluate_every = 100
         self.checkpoint_every = 100
         self.early_stop_count = 200
-        self.num_fold_training_data = 3 # the number of folds to parition the training subjects. To circumvent the memory
+        self.num_fold_training_data = 1 # the number of folds to parition the training subjects. To circumvent the memory
                                         # problem when the data is large, only one fold of the data is alternatively loaded at a time.
-        self.num_fold_testing_data = 1
+        self.num_fold_testing_data = 11
 
         self.frm_d_model = self.ndim*self.nchannel  # hidden dimension of encoder/decoder
         self.frm_d_ff = 1024  # hidden dimension of feedforward layer

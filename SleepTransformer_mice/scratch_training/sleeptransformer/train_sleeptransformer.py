@@ -33,12 +33,12 @@ tf.app.flags.DEFINE_boolean("log_device_placement", False, "Log placement of ops
 tf.app.flags.DEFINE_string("eeg_train_data", "../../data_preprocessing/kornum_data/file_list/scratch_training/eeg1/train_list.txt", "Point to directory of input data")
 tf.app.flags.DEFINE_string("eeg_eval_data", "../../data_preprocessing/kornum_data/file_list/scratch_training/eeg1/eval_list.txt", "Point to directory of input data")
 tf.app.flags.DEFINE_string("eeg_test_data", "../../data_preprocessing/kornum_data/file_list/scratch_training/eeg1/test_list.txt", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eog_train_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eog_eval_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eog_test_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("emg_train_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("emg_eval_data", "", "Point to directory of input data")
-tf.app.flags.DEFINE_string("emg_test_data", "", "Point to directory of input data")
+tf.app.flags.DEFINE_string("eog_train_data", "../../data_preprocessing/kornum_data/file_list/scratch_training/eeg2/train_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("eog_eval_data", "../../data_preprocessing/kornum_data/file_list/scratch_training/eeg2/eval_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("eog_test_data", "../../data_preprocessing/kornum_data/file_list/scratch_training/eeg2/test_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("emg_train_data", "../../data_preprocessing/kornum_data/file_list/scratch_training/emg/train_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("emg_eval_data", "../../data_preprocessing/kornum_data/file_list/scratch_training/emg/eval_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("emg_test_data", "../../data_preprocessing/kornum_data/file_list/scratch_training/emg/test_list.txt", "Point to directory of input data")
 tf.app.flags.DEFINE_string("out_dir", './scratch_training_1chan/n1/', "Point to output directory")
 tf.app.flags.DEFINE_integer("seq_len", 21, "Sequence length (default: 10)")
 tf.app.flags.DEFINE_boolean("early_stopping", True, "whether to apply early stopping (default: False)")
@@ -95,7 +95,9 @@ config.frame_seq_len = FLAGS.frame_seq_len
 config.frm_maxlen = FLAGS.frame_seq_len
 config.epoch_seq_len = FLAGS.seq_len
 config.seq_maxlen = FLAGS.seq_len
-config.training_epoch = 10*config.epoch_seq_len
+# config.training_epoch = 10
+config.evaluate_every = 3000 # 19128/5, 5 times an epoch
+config.early_stop_count = 10 # 2 epochs
 
 if (FLAGS.num_blocks > 0):
     config.frm_num_blocks = FLAGS.num_blocks
@@ -351,6 +353,8 @@ with tf.Graph().as_default():
 
         # test off the pretrained model (no finetuning whatsoever at this point)
         print("{} Start off validation".format(datetime.now()))
+        # eval_acc, eval_yhat, eval_output_loss, eval_total_loss = \
+        #     _evaluate(gen=valid_gen_wrapper.gen, log_filename="eval_result_log.txt")
         eval_acc, eval_yhat, eval_output_loss, eval_total_loss = \
             _evaluate_reduce(gen=valid_gen_wrapper.gen, log_filename="eval_result_log.txt")
         valid_gen_wrapper.gen.reset_reduce_pointer()
@@ -365,7 +369,10 @@ with tf.Graph().as_default():
                 train_gen_wrapper.next_fold()
                 # IMPORTANT HERE: the number of epoch is reduced by a factor of config.seq_len to encourage scanning through the subjects quicker
                 # then the number of training epoch need to increased by a factor of config.seq_len accordingly (in the config file)
+
                 train_batches_per_epoch = np.floor(len(train_gen_wrapper.gen.data_index) / config.batch_size / config.epoch_seq_len).astype(np.uint32)
+                # train_batches_per_epoch = np.floor(
+                #     len(train_gen_wrapper.gen.data_index) / config.batch_size).astype(np.uint32)
                 step = 1
                 while step < train_batches_per_epoch:
                     # Get a batch
@@ -388,10 +395,10 @@ with tf.Graph().as_default():
                     if current_step % config.evaluate_every == 0:
                         # Validate the model on the validation and test sets
                         print("{} Start validation".format(datetime.now()))
+                        # eval_acc, eval_yhat, eval_output_loss, eval_total_loss = \
+                        #     _evaluate(gen=valid_gen_wrapper.gen, log_filename="eval_result_log.txt")
                         eval_acc, eval_yhat, eval_output_loss, eval_total_loss = \
                             _evaluate_reduce(gen=valid_gen_wrapper.gen, log_filename="eval_result_log.txt")
-                        #test_acc, test_yhat, test_output_loss, test_total_loss = \
-                        #    _evaluate_reduce(gen=test_gen_wrapper.gen, log_filename="test_result_log.txt")
 
                         early_stop_count += 1
                         if(eval_acc >= best_acc):

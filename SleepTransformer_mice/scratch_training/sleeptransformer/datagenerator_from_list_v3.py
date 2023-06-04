@@ -31,7 +31,7 @@ class DataGenerator3:
         self.reduce_data_index = None
         self.data_size = np.sum(self.file_sizes)
 
-        self.reduce_factor = 10
+        self.reduce_factor = 5
 
         # read data from mat files in the list stored in the file 'filelist'
         self.read_mat_filelist()

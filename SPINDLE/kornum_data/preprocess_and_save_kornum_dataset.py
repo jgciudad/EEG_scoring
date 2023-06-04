@@ -5,7 +5,7 @@ import random
 import pandas as pd
 import numpy as np
 
-dataset_folder = r'C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\Laura-EEGdata_cleaned\data-Kornum'
+dataset_folder = r'C:\Users\javig\Documents\THESIS_DATA\Raw kornum lab data\Laura-EEGdata (original)\data-Kornum'
 destination_folder = r'C:\Users\javig\Documents\THESIS DATA\Raw kornum lab data\to_numpy\spectrograms'
 
 

@@ -4,7 +4,7 @@ function collection = aggregate_sleeptransformer(nchan)
     Nfold = 1;
     yh = cell(Nfold,1);
     yt = cell(Nfold,1);
-    mat_path = 'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_human\mat/';
+    mat_path = 'C:\Users\javig\Documents\THESIS_DATA\SleepTransformer_human\mat/';
     listing = dir([mat_path, '*_eeg.mat']);
     load('C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_human/data_split_eval.mat');
     

@@ -1,0 +1,2 @@
+model_checkpoint_path: "/zhome/02/5/153517/SleepTransformer_mice/scratch_training/sleeptransformer/scratch_training_3chan_CPU_test2/n1/checkpoint/model_step34425.ckpt"
+all_model_checkpoint_paths: "/zhome/02/5/153517/SleepTransformer_mice/scratch_training/sleeptransformer/scratch_training_3chan_CPU_test2/n1/checkpoint/model_step34425.ckpt"

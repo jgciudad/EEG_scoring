@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
 # from spindle_data.spindle_data_loading import load_labels
-from kornum_data.kornum_data_loading import load_labels
+# from kornum_data.kornum_data_loading import load_labels
 from matplotlib import pyplot as plt
 import os
 
