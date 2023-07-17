@@ -254,16 +254,22 @@ with tf.Graph().as_default():
                    [net.output_loss, net.loss, net.predictions, net.scores, net.Qsequence, net.Qepoch, net.Ksequence, net.Kepoch, net.summary_attention_epoch, net.summary_attention_sequence], feed_dict)
 
             sa_s_sum = np.sum(sa_s, axis=0)
-            classes = ["W", "N", "R", "A"]
-            fig, ax = plt.subplots(4,5)
-            for i in range(20):
+            class_labels = ["W", "N", "R", "A"]
 
-                c = classes[np.argmax(y_batch[0, i ,:])]
+            class_idx_batch = np.argmax(y_batch[0, :, :], 1)
 
-                ax[int(i/5), i%5].bar(np.arange(21), sa_s_sum[:, i]/np.max(sa_s_sum[:, i]))
-                ax[int(i/5), i%5].set_title(c)
+            if len(np.unique(class_idx_batch)) > 1 and np.any(class_idx_batch == 2):
+                fig, ax = plt.subplots(4,5)
+                for i in range(20):
 
+                    c = class_labels[class_idx_batch[i]]
 
+                    barlist = ax[int(i/5), i%5].bar(np.arange(21), sa_s_sum[:, i]/np.max(sa_s_sum[:, i]))
+                    barlist[i].set_color('r')
+                    str_title = f"Epoch {i}: {c}"
+                    ax[int(i/5), i%5].set_title(str_title)
+
+                fig.tight_layout()
 
             return output_loss, total_loss, yhat, score
 
