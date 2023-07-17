@@ -34,14 +34,11 @@ tf.app.flags.DEFINE_boolean("allow_soft_placement", True, "Allow device soft dev
 tf.app.flags.DEFINE_boolean("log_device_placement", False, "Log placement of ops on devices")
 
 # My manually defined parameters
-tf.app.flags.DEFINE_string("eeg_train_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg1/train_list.txt", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eeg_eval_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg1/eval_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("eeg_train_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg1/test_list.txt", "Point to directory of input data")
 tf.app.flags.DEFINE_string("eeg_test_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg1/test_list.txt", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eog_train_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg2/train_list.txt", "Point to directory of input data")
-tf.app.flags.DEFINE_string("eog_eval_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg2/eval_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("eog_train_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg2/test_list.txt", "Point to directory of input data")
 tf.app.flags.DEFINE_string("eog_test_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg2/test_list.txt", "Point to directory of input data")
-tf.app.flags.DEFINE_string("emg_train_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/emg/train_list.txt", "Point to directory of input data")
-tf.app.flags.DEFINE_string("emg_eval_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/emg/eval_list.txt", "Point to directory of input data")
+tf.app.flags.DEFINE_string("emg_train_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/emg/test_list.txt", "Point to directory of input data")
 tf.app.flags.DEFINE_string("emg_test_data", "../../data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/emg/test_list.txt", "Point to directory of input data")
 tf.app.flags.DEFINE_string("out_dir", './test_plotting_attention_weights/n1/', "Point to output directory")
 tf.app.flags.DEFINE_integer("seq_len", 21, "Sequence length (default: 10)")
