@@ -2,179 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f923eda-9e54-44a5-bf35-d4fde0a1d94f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/preprocess_and_save_spindle_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/hmm.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/hmm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/info_about_data/data_epoch_counts.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/kornum_data/kornum_data_loading.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/kornum_data_loading.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/kornum_data/preprocess_and_save_kornum_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/preprocess_and_save_kornum_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/results/spindle models.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/results/spindle models.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/spindle_data_loading.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/spindle_data_loading.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/training_CNN1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/training_CNN1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_split_eval.m" beforeDir="false" afterPath="$PROJECT_DIR$/data_split_eval.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_split_eval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/data_split_eval.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluation/aggregate_sleeptransformer.m" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/aggregate_sleeptransformer.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_list/scratch_training/eeg/eval_list.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_list/scratch_training/eeg/test_list.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_list/scratch_training/eeg/train_list.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_list/scratch_training/emg/eval_list.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_list/scratch_training/emg/test_list.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_list/scratch_training/emg/train_list.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0001_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0001_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0002_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0002_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0003_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0003_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0004_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0004_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0005_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0005_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0006_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0006_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0007_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0007_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0008_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0008_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0009_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0009_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0010_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0010_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0011_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0011_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0012_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0012_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0013_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0013_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0014_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0014_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0015_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0015_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0016_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0016_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0017_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0017_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0018_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0018_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0019_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0019_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0020_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0020_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0021_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0021_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0022_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0022_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0023_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0023_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0024_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0024_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0025_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0025_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0026_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0026_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0027_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0027_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0028_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0028_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0029_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0029_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0030_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0030_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0031_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0031_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0032_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0032_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0033_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0033_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0034_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0034_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0035_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0035_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0036_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0036_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0037_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0037_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0038_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0038_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0039_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0039_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0040_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0040_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0041_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0041_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0042_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0042_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0043_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0043_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0044_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0044_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0045_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0045_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0046_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0046_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0047_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0047_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0048_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0048_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0049_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0049_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0050_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0050_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0051_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0051_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0052_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0052_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0053_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0053_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0054_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0054_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0055_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0055_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0056_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0056_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0057_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0057_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0058_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0058_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0059_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0059_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0060_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0060_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0061_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0061_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0062_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0062_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0063_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0063_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0064_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0064_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0065_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0065_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0066_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0066_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0067_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0067_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0068_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0068_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0069_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0069_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0070_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0070_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0071_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0071_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0072_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0072_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0073_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0073_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0074_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0074_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0075_eeg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mat/n0075_emg.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/eval_result_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/eval_result_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shhs_data.m" beforeDir="false" afterPath="$PROJECT_DIR$/shhs_data.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_list/75_subjects/scratch_training/eeg/eval_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file_list/75_subjects/scratch_training/eeg/eval_list.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_list/75_subjects/scratch_training/eeg/test_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file_list/75_subjects/scratch_training/eeg/test_list.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file_list/75_subjects/scratch_training/eeg/train_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file_list/75_subjects/scratch_training/eeg/train_list.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SleepTransformer_mice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_mice/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SleepTransformer_mice/evaluation/aggregate_sleeptransformer.m" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_mice/evaluation/aggregate_sleeptransformer.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SleepTransformer_mice/scratch_training/sleeptransformer/scratch_training_1chan/n1/checkpoint/best_model_acc.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_mice/scratch_training/sleeptransformer/scratch_training_1chan/n1/checkpoint/best_model_acc.data-00000-of-00001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SleepTransformer_mice/scratch_training/sleeptransformer/train_sleeptransformer.py.bak" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,6 +143,16 @@
           <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
           <line>366</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
+          <line>113</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
+          <line>127</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

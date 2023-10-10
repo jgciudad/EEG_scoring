@@ -2,56 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f923eda-9e54-44a5-bf35-d4fde0a1d94f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../SPINDLE/cm_report.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/create_preprocessing_figure_report.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/testing_CNN1_kornum_trainedSPINDLE.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/testing_whole_SPINDLE_kornum_trainedSPINDLE.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg1/eval_list.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg1/test_list.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg1/train_list.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg2/eval_list.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg2/test_list.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/eeg2/train_list.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/emg/eval_list.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/emg/test_list.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/file_list_plot_attention/scratch_training/emg/train_list.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../t_test.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/hmm.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/hmm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/info_about_data/kornum_data_cleaning.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/info_about_data/kornum_data_cleaning.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/kornum_data/clean_kornum_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/clean_kornum_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/kornum_data/find_optimal_threshold/opt_threshold.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/find_optimal_threshold/opt_threshold.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/kornum_data/preprocess_and_save_kornum_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/preprocess_and_save_kornum_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/kornum_data/testing_CNN1_kornum.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/testing_CNN1_kornum.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SPINDLE/kornum_data/training_CNN1_kornum.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/kornum_data/training_CNN1_kornum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/results/results.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/results/results.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/testing_CNN1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/testing_CNN1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/testing_whole_SPINDLE.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/testing_whole_SPINDLE.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SPINDLE/spindle_data/training_CNN1.py" beforeDir="false" afterPath="$PROJECT_DIR$/../SPINDLE/spindle_data/training_CNN1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SleepTransformer_human/RESULTS.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SleepTransformer_human/data_split_eval.m" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_human/data_split_eval.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SleepTransformer_human/data_split_eval.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_human/data_split_eval.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SleepTransformer_human/evaluation/aggregate_sleeptransformer.m" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_human/evaluation/aggregate_sleeptransformer.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SleepTransformer_human/scratch_training/sleeptransformer/scratch_training_1chan/n1/eval_result_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_human/scratch_training/sleeptransformer/scratch_training_1chan/n1/eval_result_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SleepTransformer_human/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_human/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SleepTransformer_human/file_list/75_subjects/scratch_training/eeg/eval_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_human/file_list/75_subjects/scratch_training/eeg/eval_list.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SleepTransformer_human/file_list/75_subjects/scratch_training/eeg/test_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_human/file_list/75_subjects/scratch_training/eeg/test_list.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SleepTransformer_human/file_list/75_subjects/scratch_training/eeg/train_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../SleepTransformer_human/file_list/75_subjects/scratch_training/eeg/train_list.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RESULTS_ST.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/RESULTS_ST.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_preprocessing/kornum_data/mat/Data in in Documents.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_preprocessing/kornum_data/shhs_data.m" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessing/kornum_data/shhs_data.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data_preprocessing/spindle_data/shhs_data.m" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessing/spindle_data/shhs_data.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluation/aggregate_sleeptransformer.m" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/aggregate_sleeptransformer.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluation/aggregate_sleeptransformer_SPINDLE.m" beforeDir="false" afterPath="$PROJECT_DIR$/evaluation/aggregate_sleeptransformer_SPINDLE.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/datagenerator_from_list_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/datagenerator_from_list_v3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/modules.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/checkpoint/best_model_acc.data-00000-of-00001" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/checkpoint/best_model_acc.data-00000-of-00001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/checkpoint/best_model_acc.index" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/checkpoint/best_model_acc.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/checkpoint/best_model_acc.meta" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/checkpoint/best_model_acc.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/checkpoint/checkpoint" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/checkpoint/checkpoint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/current_best.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/current_best.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/eval_result_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/eval_result_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/train_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/scratch_training_1chan/n1/train_log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/sleeptransformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/sleeptransformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py.bak" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/transformer_encoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch_training/sleeptransformer/transformer_encoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py.bak" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +59,7 @@
       <recent name="C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_mice\scratch_training\sleeptransformer" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test_sleeptransformer">
+  <component name="RunManager" selected="Python.test_sleeptransformer_SPINDLE_HUMMUSS">
     <configuration name="plot_training_curve" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SleepTransformer_human" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -182,7 +144,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="train_sleeptransformer (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test_sleeptransformer_SPINDLE_HUMMUSS" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SleepTransformer_human" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -194,7 +156,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer_SPINDLE_HUMMUSS.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -205,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test_sleeptransformer_SPINDLE_HUMMUSS" />
+        <item itemvalue="Python.test_sleeptransformer_SPINDLE" />
         <item itemvalue="Python.test_sleeptransformer" />
         <item itemvalue="Python.sleeptransformer" />
         <item itemvalue="Python.plot_training_curve" />
-        <item itemvalue="Python.train_sleeptransformer (1)" />
-        <item itemvalue="Python.test_sleeptransformer_SPINDLE" />
       </list>
     </recent_temporary>
   </component>
@@ -222,6 +184,21 @@
       <option name="presentableId" value="Default" />
       <updated>1670487854764</updated>
     </task>
+    <task id="LOCAL-00001" summary="Removed eval data">
+      <created>1689623873079</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1689623873079</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Condition in attention plot">
+      <created>1689627592865</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1689627592865</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -236,105 +213,16 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Removed eval data" />
+    <MESSAGE value="Condition in attention plot" />
+    <option name="LAST_COMMIT_MESSAGE" value="Condition in attention plot" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/plot_training_curve.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
-          <line>375</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
-          <line>355</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
-          <line>364</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
-          <line>367</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
-          <line>368</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
-          <line>373</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer_SPINDLE.py</url>
-          <line>186</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer_SPINDLE.py</url>
-          <line>330</line>
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer_SPINDLE.py</url>
-          <line>310</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer_SPINDLE.py</url>
-          <line>92</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
-          <line>225</line>
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
-          <line>202</line>
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/train_sleeptransformer.py</url>
-          <line>28</line>
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer.py</url>
-          <line>339</line>
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer.py</url>
-          <line>289</line>
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer.py</url>
-          <line>287</line>
-          <option name="timeStamp" value="69" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/test_sleeptransformer.py</url>
-          <line>286</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scratch_training/sleeptransformer/plot_training_curve.py</url>
-          <line>10</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="fig.axes" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
