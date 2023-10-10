@@ -15,6 +15,8 @@ plt.ion()
 
 save_path = r'C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SPINDLE\results\4 - trained on kornum data'
 model_name = 'A_1'
+
+
 data_path = r'C:\Users\javig\Documents\THESIS_DATA\Raw kornum lab data\to_numpy\spectrograms'
 csv_path = r"C:\Users\javig\Documents\THESIS_DATA\Raw kornum lab data\to_numpy\labels_all.csv"
 

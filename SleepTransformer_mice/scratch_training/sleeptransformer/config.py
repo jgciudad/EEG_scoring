@@ -22,7 +22,7 @@ class Config(object):
         self.early_stop_count = 200
         self.num_fold_training_data = 1 # the number of folds to parition the training subjects. To circumvent the memory
                                         # problem when the data is large, only one fold of the data is alternatively loaded at a time.
-        self.num_fold_testing_data = 11
+        self.num_fold_testing_data = 4
 
         self.frm_d_model = self.ndim*self.nchannel  # hidden dimension of encoder/decoder
         self.frm_d_ff = 1024  # hidden dimension of feedforward layer

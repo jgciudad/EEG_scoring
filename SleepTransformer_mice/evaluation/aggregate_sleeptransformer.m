@@ -6,7 +6,7 @@ function collection = aggregate_sleeptransformer(nchan)
     yt = cell(Nfold,1);
     mat_path = 'C:\Users\javig\Documents\THESIS_DATA\SleepTransformer_mice\data_preprocessing\kornum_data\mat\';
     listing = dir([mat_path, '*_eeg1.mat']);
-    load('C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_mice\data_preprocessing\kornum_data\data_split_eval.mat');
+    load('C:\Users\javig\Documents\Drive\DTU\MASTER_THESIS\Code\EEG_scoring\SleepTransformer_mice\data_preprocessing\kornum_data\data_split_eval.mat');
     
     acc_novote = [];
     
@@ -26,7 +26,7 @@ function collection = aggregate_sleeptransformer(nchan)
         end
         
         if(seq_len < 100)
-            load("C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_mice\scratch_training\sleeptransformer\scratch_training_3chan_CPU_test2\n1\test_ret.mat");
+            load("C:\Users\javig\Documents\Drive\DTU\MASTER_THESIS\Code\EEG_scoring\SleepTransformer_mice\scratch_training\sleeptransformer\scratch_training_3chan_CPU_test2\n1\test_ret.mat");
         else
             load(['./intepretable_sleep/sleeptransformer_simple_longseq/scratch_training_',num2str(nchan),'chan/n',num2str(fold),'/test_ret.mat']);
         end

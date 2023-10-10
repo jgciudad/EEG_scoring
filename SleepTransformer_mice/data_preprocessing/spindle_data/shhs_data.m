@@ -4,7 +4,7 @@ clc
 
 % addpath('C:\Users\javig\Documents\Drive\DTU\MASTER THESIS\Code\EEG_scoring\SleepTransformer_mice\edf_reader');
 
-spindle_path = 'C:\Users\javig\Desktop\SPINDLE dataset\SPINDLE dataset\data (original)\CohortA';
+spindle_path = 'C:\Users\javig\Desktop\SPINDLE dataset\data (original)\CohortA';
 scorer=2;
 mat_path = ['./mat/', 'scorer_', num2str(scorer), '/'];
 
