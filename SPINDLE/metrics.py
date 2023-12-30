@@ -1,5 +1,6 @@
 import tensorflow as tf
-
+import sklearn.metrics
+import os
 
 
 
@@ -159,7 +160,6 @@ def multiclass_balanced_accuracy(y_true, y_pred, n_classes=3):
 
     return average_recall
 
-
 class MulticlassBalancedAccuracy(tf.keras.metrics.Metric):
     '''
     Gives the average of the recall over each batch, where the recall of each batch is the average of the recall of each
@@ -169,32 +169,31 @@ class MulticlassBalancedAccuracy(tf.keras.metrics.Metric):
 
     I tested it and gives the same result as sklearn.metrics.balanced_accuracy_score(y_true, y_pred).
     Code to test it:
-        y_true1 = np.array([0, 0, 0, 0, 1, 1, 1, 2, 2])
-        y_pred1 = np.array([0, 0, 1, 0, 1, 0, 1, 2, 0])
-        y_true2 = np.array([0, 2, 0, 0, 0, 0, 1, 2, 2])
-        y_pred2 = np.array([0, 0, 1, 0, 1, 0, 1, 2, 0])
-        av_bacc = (sklearn.metrics.balanced_accuracy_score(y_true1, y_pred1) + sklearn.metrics.balanced_accuracy_score(y_true2, y_pred2))/2
-        print(av_bacc)
-        y_true1 = np.array(
-            [[0, 0, 1], [0, 0, 1], [0, 0, 1], [0, 0, 1], [1, 0, 0], [1, 0, 0], [1, 0, 0], [0, 1, 0], [0, 1, 0]])
-        y_pred1 = np.array(
-            [[0, 0, 1], [0, 0, 1], [1, 0, 0], [0, 0, 1], [0, 0, 1], [1, 0, 0], [1, 0, 0], [0, 1, 0], [0, 0, 1]])
-        y_true2 = np.array(
-            [[0, 0, 1], [0, 1, 0], [0, 0, 1], [0, 0, 1], [0, 0, 1], [0, 0, 1], [1, 0, 0], [0, 1, 0], [0, 1, 0]])
-        y_pred2 = np.array(
-            [[0, 0, 1], [0, 0, 1], [1, 0, 0], [0, 0, 1], [0, 0, 1], [1, 0, 0], [1, 0, 0], [0, 1, 0], [0, 0, 1]])
-        y_true1 = tf.convert_to_tensor(y_true1)
-        y_pred1 = tf.convert_to_tensor(y_pred1)
-        y_true2 = tf.convert_to_tensor(y_true2)
-        y_pred2 = tf.convert_to_tensor(y_pred2)
-        MBA = MulticlassBalancedAccuracy(n_classes=3)
-        MBA.update_state(y_true1,y_pred1)
-        MBA.update_state(y_true2,y_pred2)
-        print(MBA.result())
+    y_true1 = np.array([0, 0, 0, 0, 1, 1, 1, 2, 2])
+    y_pred1 = np.array([0, 0, 1, 0, 1, 0, 1, 2, 0])
+    y_true2 = np.array([0, 2, 0, 0, 0, 0, 1, 2, 2])
+    y_pred2 = np.array([0, 0, 1, 0, 1, 0, 1, 2, 0])
+    av_bacc = (sklearn.metrics.balanced_accuracy_score(y_true1, y_pred1) + sklearn.metrics.balanced_accuracy_score(y_true2, y_pred2))/2
+    print(av_bacc)
+
+    y_true1 = pd.get_dummies(y_true1, dtype=int).to_numpy()
+    y_pred1 = pd.get_dummies(y_pred1, dtype=int).to_numpy()
+    y_true2 = pd.get_dummies(y_true2, dtype=int).to_numpy()
+    y_pred2 = pd.get_dummies(y_pred2, dtype=int).to_numpy()
+
+    y_true1 = tf.convert_to_tensor(y_true1)
+    y_pred1 = tf.convert_to_tensor(y_pred1)
+    y_true2 = tf.convert_to_tensor(y_true2)
+    y_pred2 = tf.convert_to_tensor(y_pred2)
+
+    MBA = MulticlassBalancedAccuracy(n_classes=3)
+    MBA.update_state(y_true1,y_pred1)
+    MBA.update_state(y_true2,y_pred2)
+    print(MBA.result())
     '''
 
     def __init__(self, n_classes, name='multiclass_balanced_accuracy', **kwargs):
-        super(MulticlassBalancedAccuracy, self).__init__(name=name, **kwargs)
+        super().__init__(name=name, **kwargs)
         self.n_classes = n_classes
         self.TP = tf.keras.metrics.TruePositives()
         self.FN = tf.keras.metrics.FalseNegatives()
@@ -465,3 +464,66 @@ class BinaryWeightedCrossEntropy(tf.keras.losses.Loss):
 
         # tf.print('ce_updated: ', ce)
         return ce
+
+class MyCustomCallback(tf.keras.callbacks.Callback):
+  
+  def __init__(self, validation_dataset, save_checkpoint_path, evaluation_rate, improvement_threshold, early_stopping_thr):
+      self.validation_dataset = validation_dataset
+      self.path = save_checkpoint_path
+      self.evaluation_rate = evaluation_rate
+      self.best_bal_acc = 0
+      self.improvement_threshold = improvement_threshold
+      self.counter = 0
+      self.early_stopping_thr = early_stopping_thr
+      self.history = []
+
+      if os.path.isfile(os.path.join(self.path, "validation_log.txt")):
+        os.remove(os.path.join(self.path, "validation_log.txt"))
+
+  def on_train_batch_end(self, batch, logs=None):
+        
+        if self.counter < self.early_stopping_thr:
+            if batch % self.evaluation_rate == 0:
+                print('Model validation')
+                y_true = []
+                y_pred = []
+                for i in range(len(self.validation_dataset)):
+                # for i in range(15): # shorter just for debugging
+                    x, y_true_batch = self.validation_dataset.__getitem__(i)
+                    y_true_batch = tf.convert_to_tensor(y_true_batch)
+                    y_pred_batch = self.model.predict(x, verbose=0)
+                    y_pred_batch = tf.one_hot(tf.math.argmax(y_pred_batch, axis=1), depth=3)
+
+                    y_true.append(y_true_batch)
+                    y_pred.append(y_pred_batch)
+
+                y_true = tf.concat(y_true, axis=0)
+                y_pred = tf.concat(y_pred, axis=0)
+
+                y_true = tf.math.argmax(y_true, axis=1)
+                y_pred = tf.math.argmax(y_pred, axis=1)
+                bal_acc = sklearn.metrics.balanced_accuracy_score(y_true=y_true, y_pred=y_pred)
+
+                print('Validation balanced accuracy: ', bal_acc)
+
+                with open(os.path.join(self.path, "validation_log.txt"), "a") as text_file:
+                    text_file.write("{:g} {:g} \n".format(batch, bal_acc))
+                # self.history.append(bal_acc)
+
+                if bal_acc - self.best_bal_acc > self.improvement_threshold:
+                    self.best_bal_acc = bal_acc
+                    self.counter = 0
+                    print('BEST MODEL UPDATED')
+
+                    self.model.save_weights(os.path.join(self.path, "best_model.h5"))
+                else:
+                    self.counter += 1
+        else:
+            print('EARLY STOPPING ENABLED')
+            # self.model.history.history['val_bal_acc'] = self.history
+            self.model.stop_training = True
+
+
+
+
+
