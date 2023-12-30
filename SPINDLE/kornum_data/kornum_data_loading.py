@@ -1,3 +1,6 @@
+import os 
+print(os.getcwd())
+
 import pandas as pd
 import numpy as np
 import os.path
@@ -57,7 +60,7 @@ def load_labels(labels_path,
     df.loc[(df != 1) & (df != 2) & (df != 3)] = 4
     df = df.iloc[2:-2].copy()  # Drop 2 first and 2 last epochs
 
-    labels = pd.get_dummies(df)
+    labels = pd.get_dummies(df, dtype=int)
     if labels.shape[
         1] == 4:  # Assing name and reorder columns. If shape[1]<4 is because there isn't any artifact, so the artifact column is added 'artificially'
         labels.columns = ['WAKE', 'NREM', 'REM', 'Art']  # Assign name to columns
