@@ -483,7 +483,7 @@ class MyCustomCallback(tf.keras.callbacks.Callback):
   def on_train_batch_end(self, batch, logs=None):
         
         if self.counter < self.early_stopping_thr:
-            if batch % self.evaluation_rate == 0:
+            if batch % self.evaluation_rate == 0 and batch > 0:
                 print('Model validation')
                 y_true = []
                 y_pred = []
