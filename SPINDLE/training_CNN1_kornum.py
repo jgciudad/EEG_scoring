@@ -9,17 +9,18 @@ import sklearn.metrics
 from tensorflow.keras.layers import Input, MaxPool2D, Conv2D, Dense, Flatten, Dropout
 from kornum_data.kornum_data_loading import SequenceDataset
 from metrics import *
-from tools import *
+# from tools import *
 import pickle
 
-plt.ion()
+# plt.ion()
 
-save_path = '/Users/tlj258/spindle_outputs'
-model_name = 'A_1'
+save_path = '/home/s202283/outputs/spindle'
+model_name = 'A_3'
 
-data_path = '/Users/tlj258/spindle_data'
-csv_path = "/Users/tlj258/labels_all.csv"
-ignore_artifacts = True
+data_path = '/scratch/s202283/data/spindle_data/numpy'
+csv_path = "/scratch/s202283/data/spindle_data/labels_all.csv"
+
+print("Devices available: ", tf.config.list_physical_devices())
 
 # -------------------------------------------------------------------------------------------------------------------------
 
@@ -54,7 +55,7 @@ spindle_model = tf.keras.Sequential([
 
 checkpoint_path = os.path.join(save_path, model_name)
 if not os.path.exists(os.path.dirname(checkpoint_path)):
-    os.makedirs(os.path.dirname(checkpoint_path))
+    os.makedirs(os.path.dirname(checkpoint_path), exist_ok=True)
 checkpoint_callback = MyCustomCallback(validation_dataset=val_sequence,
                                        save_checkpoint_path=checkpoint_path,
                                        evaluation_rate=int(len(train_sequence)/10),
@@ -77,8 +78,12 @@ history1 = spindle_model.fit(
     verbose=1,
     callbacks=[checkpoint_callback])
 
-with open('training_history.pkl', 'wb') as f:
+print('End of training reached')
+
+with open(os.path.join(save_path, model_name, 'training_history.pkl'), 'wb') as f:
     pickle.dump(history1.history, f)
+
+print('History saving reached')
 
 # plot_history_cnn1(history1.history, model_name, save_path, epochs=5)
 
