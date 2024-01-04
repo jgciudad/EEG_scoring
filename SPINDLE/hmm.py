@@ -225,7 +225,7 @@ def viterbi(y, A, Pi):
 
     # Build the output, optimal model trajectory
     # x = np.empty(T, 'B')
-    x = np.zeros(T, dtype=np.int)
+    x = np.zeros(T, dtype=int)
     x[-1] = np.argmax(T1[:, T - 1])
     for i in reversed(range(1, T)):
         x[i - 1] = T2[x[i], i]
