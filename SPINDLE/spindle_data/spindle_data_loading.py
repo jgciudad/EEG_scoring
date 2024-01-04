@@ -49,7 +49,8 @@ def windowing(signal, window_size=32*5, window_stride=32, fs=128):
 def load_labels(labels_path,
                   scorer,
                   just_artifact_labels,
-                  artifact_to_stages):
+                  artifact_to_stages,
+                  cohort):
 
     # Is load_labels_2
 
@@ -60,8 +61,8 @@ def load_labels(labels_path,
 
     df = df.iloc[2:-2].copy() # Drop 2 first and 2 last epochs
 
-    labels_1 = pd.get_dummies(df[1])
-    labels_2 = pd.get_dummies(df[2])
+    labels_1 = pd.get_dummies(df[1], dtype=int)
+    labels_2 = pd.get_dummies(df[2], dtype=int)
 
     if 'a' in labels_1:
         labels_1.drop('a', axis=1, inplace=True)
@@ -80,11 +81,16 @@ def load_labels(labels_path,
         labels = labels['art']
     elif just_artifact_labels==False:
         if artifact_to_stages==True:
-            labels.loc[labels["1"] == 1, 'w'] = 1
-            labels.loc[labels["2"] == 1, 'n'] = 1
-            labels.loc[labels["3"] == 1, 'r'] = 1
+            if cohort=='d':
+                if '1' in labels.columns:
+                    labels.loc[labels["1"] == 1, 'w'] = 1
+                    labels.drop('1', axis=1, inplace=True)
+            else: 
+                labels.loc[labels["1"] == 1, 'w'] = 1
+                labels.loc[labels["2"] == 1, 'n'] = 1
+                labels.loc[labels["3"] == 1, 'r'] = 1
 
-            labels = labels.iloc[:, -3:]
+                labels = labels.iloc[:, -3:]
         elif artifact_to_stages==False:
             labels.drop(labels.loc[(labels['1'] == 1) | (labels['2'] == 1) | (labels['3'] == 1)].index, inplace=True)
             labels = labels.iloc[:, -3:]
@@ -121,7 +127,8 @@ def load_recording(signal_paths,
                    just_artifact_labels,
                    artifact_to_stages,
                    balance_artifacts,
-                   validation_split):  # stft_size, stft_stride, fs, epoch_length,
+                   validation_split,
+                   cohort):  # stft_size, stft_stride, fs, epoch_length,
 
     # Is load_recording_to_dataset_4
 
@@ -153,7 +160,8 @@ def load_recording(signal_paths,
             y_mouse = load_labels(labels_paths[i],
                                   scorer=scorer,
                                   just_artifact_labels=just_artifact_labels,
-                                  artifact_to_stages=artifact_to_stages)
+                                  artifact_to_stages=artifact_to_stages,
+                                  cohort=cohort)
             x_mouse = x_mouse[y_mouse.index.to_numpy() - 2]  # Select just the epochs in y
             y_mouse = y_mouse.to_numpy()
 
@@ -197,7 +205,8 @@ def load_to_dataset(signal_paths,
                     just_artifact_labels,
                     artifact_to_stages,
                     balance_artifacts,
-                    validation_split):  # stft_size, stft_stride, fs, epoch_length,
+                    validation_split, 
+                    cohort):  # stft_size, stft_stride, fs, epoch_length,
 
     # Is load_recording_to_dataset_4
 
@@ -226,7 +235,8 @@ def load_to_dataset(signal_paths,
                               just_artifact_labels,
                               artifact_to_stages,
                               balance_artifacts,
-                              validation_split)
+                              validation_split,
+                              cohort)
 
         input_dataset = tf.data.Dataset.from_tensor_slices(x)
         labels_dataset = tf.data.Dataset.from_tensor_slices(y)
