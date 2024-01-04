@@ -5,8 +5,9 @@ import random
 import pandas as pd
 import numpy as np
 
-dataset_folder = '/Users/tlj258/Documents/Laura-EEGdata_cleaned'
-destination_folder = '/Users/tlj258/spindle_data'
+# WARNING!!!! MAKE SURE THE DESTINATION FOLDER IS NOT WITHIN ONEDRIVE OR ANY OTHER BACKUP SYSTEM, IT IT WILL MAKE IT COLLAPSE
+dataset_folder = '/scratch/s202283/data/Laura-EEGdata_cleaned'
+destination_folder = '/scratch/s202283/data/spindle_data/numpy'
 
 
 training_validation_labels = [
@@ -57,64 +58,64 @@ training_validation_labels = [
     ]
 
 training_validation_signals = [
-    '2DTUSERVER-Alexandra/edf/M23-b1.edf',
-    '2DTUSERVER-Alexandra/edf/M23-b2.edf',
-    '2DTUSERVER-Alexandra/edf/M23-b3.edf',
-    '2DTUSERVER-Alexandra/edf/M29-b1.edf',
-    '2DTUSERVER-Alexandra/edf/M29-b2.edf',
-    '2DTUSERVER-Alexandra/edf/M29-b3.edf',
-    '2DTUSERVER-Alexandra/edf/M48-b1.edf',
-    '2DTUSERVER-Alexandra/edf/M48-b2.edf',
-    '2DTUSERVER-Alexandra/edf/M48-b3.edf',
-    '2DTUSERVER-Alexandra/edf/M52-b1.edf',
-    '2DTUSERVER-Alexandra/edf/M52-b3.edf',
-    '2DTUSERVER-Alexandra/edf/M58-b1.edf',
-    '2DTUSERVER-Alexandra/edf/M58-b3.edf',
-    '2DTUSERVER-CH/edf/m1-b1.edf',
-    '2DTUSERVER-CH/edf/m11-b1.edf',
-    '2DTUSERVER-CH/edf/m12-b1.edf',
-    '2DTUSERVER-CH/edf/m14-b1.edf',
-    '2DTUSERVER-CH/edf/m14-r3.edf',
-    '2DTUSERVER-CH/edf/m15-r3.edf',
-    '2DTUSERVER-CH/edf/m2-b1.edf',
-    '2DTUSERVER-CH/edf/m3-b1.edf',
-    '2DTUSERVER-CH/edf/m4-b1.edf',
-    '2DTUSERVER-CH/edf/m5-b1.edf',
-    '2DTUSERVER-CH/edf/m6-r3.edf',
-    '2DTUSERVER-CH/edf/m7-b1.edf',
-    '2DTUSERVER-CH/edf/m8-b1.edf',
-    '2DTUSERVER-CH/edf/m8-r3.edf',
-    '2DTUSERVER-LOUISE/edf/M16-b2.edf',
-    '2DTUSERVER-LOUISE/edf/M16-b3.edf',
-    '2DTUSERVER-LOUISE/edf/M18-b3.edf',
-    '2DTUSERVER-LOUISE/edf/M20-b3.edf',
-    '2DTUSERVER-LOUISE/edf/M309-b1.edf',
-    '2DTUSERVER-Maria/edf/m121-b1.edf',
-    '2DTUSERVER-Maria/edf/m121-b2.edf',
-    '2DTUSERVER-Maria/edf/m61-b1.edf',
-    '2DTUSERVER-Maria/edf/m63-b1.edf',
-    '2DTUSERVER-Maria/edf/m63-b2.edf',
-    '2DTUSERVER-Maria/edf/m86-b1.edf',
-    '2DTUSERVER-Maria/edf/m88-b1.edf',
-    '2DTUSERVER-Maria/edf/m88-b2.edf',
-    '2DTUSERVER-Maria/edf/m96-b1.edf',
-    '2DTUSERVER-Maria/edf/m96-b2.edf',
-    '2DTUSERVER-Marieke/edf/m2-b1.edf',
-    '2DTUSERVER-Marieke/edf/m21-b1.edf'
+    '2DTUSERVER-Alexandra/EDF/M23-b1.edf',
+    '2DTUSERVER-Alexandra/EDF/M23-b2.edf',
+    '2DTUSERVER-Alexandra/EDF/M23-b3.edf',
+    '2DTUSERVER-Alexandra/EDF/M29-b1.edf',
+    '2DTUSERVER-Alexandra/EDF/M29-b2.edf',
+    '2DTUSERVER-Alexandra/EDF/M29-b3.edf',
+    '2DTUSERVER-Alexandra/EDF/M48-b1.edf',
+    '2DTUSERVER-Alexandra/EDF/M48-b2.edf',
+    '2DTUSERVER-Alexandra/EDF/M48-b3.edf',
+    '2DTUSERVER-Alexandra/EDF/M52-b1.edf',
+    '2DTUSERVER-Alexandra/EDF/M52-b3.edf',
+    '2DTUSERVER-Alexandra/EDF/M58-b1.edf',
+    '2DTUSERVER-Alexandra/EDF/M58-b3.edf',
+    '2DTUSERVER-CH/EDF/m1-b1.edf',
+    '2DTUSERVER-CH/EDF/m11-b1.edf',
+    '2DTUSERVER-CH/EDF/m12-b1.edf',
+    '2DTUSERVER-CH/EDF/m14-b1.edf',
+    '2DTUSERVER-CH/EDF/m14-r3.edf',
+    '2DTUSERVER-CH/EDF/m15-r3.edf',
+    '2DTUSERVER-CH/EDF/m2-b1.edf',
+    '2DTUSERVER-CH/EDF/m3-b1.edf',
+    '2DTUSERVER-CH/EDF/m4-b1.edf',
+    '2DTUSERVER-CH/EDF/m5-b1.edf',
+    '2DTUSERVER-CH/EDF/m6-r3.edf',
+    '2DTUSERVER-CH/EDF/m7-b1.edf',
+    '2DTUSERVER-CH/EDF/m8-b1.edf',
+    '2DTUSERVER-CH/EDF/m8-r3.edf',
+    '2DTUSERVER-LOUISE/EDF/M16-b2.edf',
+    '2DTUSERVER-LOUISE/EDF/M16-b3.edf',
+    '2DTUSERVER-LOUISE/EDF/M18-b3.edf',
+    '2DTUSERVER-LOUISE/EDF/M20-b3.edf',
+    '2DTUSERVER-LOUISE/EDF/M309-b1.edf',
+    '2DTUSERVER-Maria/EDF/m121-b1.edf',
+    '2DTUSERVER-Maria/EDF/m121-b2.edf',
+    '2DTUSERVER-Maria/EDF/m61-b1.edf',
+    '2DTUSERVER-Maria/EDF/m63-b1.edf',
+    '2DTUSERVER-Maria/EDF/m63-b2.edf',
+    '2DTUSERVER-Maria/EDF/m86-b1.edf',
+    '2DTUSERVER-Maria/EDF/m88-b1.edf',
+    '2DTUSERVER-Maria/EDF/m88-b2.edf',
+    '2DTUSERVER-Maria/EDF/m96-b1.edf',
+    '2DTUSERVER-Maria/EDF/m96-b2.edf',
+    '2DTUSERVER-Marieke/EDF/m2-b1.edf',
+    '2DTUSERVER-Marieke/EDF/m21-b1.edf'
     ]
 
 test_signals = [
     '2DTUSERVER-Alexandra/EDF/M52-b2.edf',
     '2DTUSERVER-Alexandra/EDF/M58-b2.edf',
-    '2DTUSERVER-CH/edf/m13-b1.edf',
+    '2DTUSERVER-CH/EDF/m13-b1.edf',
     '2DTUSERVER-CH/EDF/m15-b1.edf',
-    '2DTUSERVER-CH/edf/m6-b1.edf',
+    '2DTUSERVER-CH/EDF/m6-b1.edf',
     '2DTUSERVER-LOUISE/EDF/M18-b2.edf',
     '2DTUSERVER-LOUISE/EDF/M313-b1.edf',
     '2DTUSERVER-Maria/EDF/m61-b2.edf',
-    '2DTUSERVER-Maria/edf/m86-b2.edf',
+    '2DTUSERVER-Maria/EDF/m86-b2.edf',
     '2DTUSERVER-Maria/EDF/m94-b1.edf',
-    '2DTUSERVER-Maria/edf/m94-b2.edf'
+    '2DTUSERVER-Maria/EDF/m94-b2.edf'
     ]
 
 test_labels = [
