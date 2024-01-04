@@ -2,7 +2,7 @@ import os
 from matplotlib import pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, recall_score, f1_score, precision_score, accuracy_score
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, recall_score, f1_score, precision_score, accuracy_score, cohen_kappa_score
 
 
 def plot_history_cnn1(history, model_name, save_path, epochs=''):
@@ -85,13 +85,27 @@ def concatenate_histories(history1, history2):
     return history
 
 
+def matrix_to_excel(cm, save_path, filename):
+    ## convert your array into a dataframe
+    df = pd.DataFrame(cm)
+
+    df.to_excel(os.path.join(save_path, filename), index=False)
+
+
 def compute_and_save_metrics_cnn1(y_true, y_pred, save_path, model_name):
     cm = confusion_matrix(y_true, y_pred)
+
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=['NREM', 'REM', 'WAKE'])
     cm_plot = disp.plot(cmap=plt.cm.Blues)
     plt.savefig(os.path.join(save_path, 'cm_' + model_name + '.png'))
 
+    matrix_to_excel(cm, save_path, 'confusion_matrix.xlsx')
+
     # ppv = [cm[0,0]/np.sum(cm[:,0]), cm[1,1]/np.sum(cm[:,1]), cm[2,2]/np.sum(cm[:,2]) ] # positive predictive value # it works properly but I prefer to use the sklearn implementation
+    kappa = cohen_kappa_score(y1=y_true, y2=y_pred, labels=np.arange(1, 4))
+    kappa = np.array([kappa, 2])
+    matrix_to_excel(kappa, save_path, 'kappa.xlsx')
+
     ppv = precision_score(y_true, y_pred, average=None)  # positive predictive value
     npv = [np.sum(cm[1:, 1:]) / np.sum(cm[:, 1:]),
            (np.sum(cm[:, 0]) + np.sum(cm[:, 2]) - cm[1, 0] - cm[1, 2]) / (np.sum(cm[:, 0]) + np.sum(cm[:, 2])),
